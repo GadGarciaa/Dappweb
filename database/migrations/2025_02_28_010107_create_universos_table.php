@@ -18,30 +18,10 @@ return new class extends Migration
             $table->boolean('has_supernatural_beings')->default(false); 
             $table->timestamps();
         });        
-
-        Schema::create('genero', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 50)->unique();
-            $table->timestamps();
-        });
-
-        Schema::create('superhero', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 50)->unique();
-            $table->foreignId('universo_id')->constrained('universo')->onDelete('cascade');
-            $table->foreignId('genero_id')->constrained('genero')->onDelete('cascade');
-            $table->string("picture", 200)->nullable();
-            $table->timestamps();
-        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('superhero');
-        Schema::dropIfExists('genero');
         Schema::dropIfExists('universo');
     }
 };

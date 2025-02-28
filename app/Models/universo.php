@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Universe extends Model
+class universo extends Model
 {
-    protected $table = "universo";
+    protected $table ="universos";
 }
