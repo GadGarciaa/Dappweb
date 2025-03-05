@@ -8,5 +8,5 @@ Route::get('/', function () {
     /*echo'<prev>';
     print_r(Universe::all());
     echo '</prev>';*/
-    dump(Universo::all());
+    dump(universo::all());
 });

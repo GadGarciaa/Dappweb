@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class universo extends Model
 {
-    protected $table ="universos";
+    protected $table ="universo";
 }

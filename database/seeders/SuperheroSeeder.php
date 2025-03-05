@@ -2,19 +2,24 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\superhero;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class SuperheroSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Superhero::create([
-            "name"=> "SuperMan",
+        DB::table('superhero')->insert([
+            [
+                'name' => 'Verdie Torp',
+                'universo_id' => 1, // Ensure this ID exists in the universos table
+                'genero_id' => 1, // Ensure this ID exists in the generos table
+                'picture' => 'https://via.placeholder.com/640x480.png/0066dd?text=superhero+voluptatem',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            // Other records if any...
         ]);
     }
 }

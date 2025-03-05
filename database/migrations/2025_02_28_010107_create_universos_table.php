@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('universo', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50)->unique(); 
-            $table->string('publisher', 50); 
+            $table->string('publisher', 50)->nullable()->default(null); // Ensure publisher is nullable and has a default value
             $table->integer('number_of_heroes')->default(0); 
             $table->integer('number_of_villains')->default(0); 
             $table->boolean('has_multiverse')->default(false); 
