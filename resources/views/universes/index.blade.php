@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Gender Test</title>
+    <title>Universe Test</title>
 </head>
 <body>
-    <h1>Gender</h1>
+    <h1>Universe</h1>
 
     <table>
         <thead>
@@ -15,7 +15,7 @@
         </thead>
 
         <tbody>
-            @foreach($gender as $item)
+            @foreach($universes as $item)
                 <tr>
                     <td> {{ $item-> id }}</td>
                     <td>{{ $item-> name }}</td>
