@@ -30,7 +30,8 @@ class UniverseController extends Controller
 
     public function show(string $id)
     {
-        //
+        $universe = Universe::findOrFail($id);
+        return view('universes.show', compact('universe'));
     }
 
     /**

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Universe Test</title>
+    <title>Gender List</title>
 </head>
 <body>
-    <h1>Universe</h1>
+    <h1>Genders</h1>
 
     <table>
         <thead>
@@ -16,12 +16,12 @@
         </thead>
 
         <tbody>
-            @foreach($universes as $item)
+            @foreach($genders as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>
-                        <a href="{{ route('universes.show', $item->id) }}">View</a>
+                        <a href="{{ route('genders.show', $item->id) }}">View</a>
                     </td>
                 </tr>
             @endforeach
