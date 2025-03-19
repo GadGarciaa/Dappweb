@@ -30,9 +30,9 @@ class SuperHeroController extends Controller
             'name' => 'required|string|max:255',
             'real_name' => 'required|string|max:255',
             'universe_id' => 'required|exists:universes,id',
-            'picture' => 'nullable|url'
+            'picture' => 'nullable|string|max:255' // Permitir cualquier texto
         ]);
-
+    
         SuperHero::create([
             'gender_id' => $request->gender_id,
             'real_name' => $request->real_name,
@@ -44,29 +44,40 @@ class SuperHeroController extends Controller
         return to_route('superheroes.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $superhero = SuperHero::find($id);
         return view('superheroes.show', compact('superhero'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $superhero = SuperHero::findOrFail($id);
+        $genders = Gender::select('id', 'name')->get();
+        $universes = Universe::select('id', 'name')->get();
+        return view('superheroes.edit', compact('superhero', 'genders', 'universes'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'gender_id' => 'required|exists:genders,id',    
+            'name' => 'required|string|max:255|unique:superheroes,name,' . $id,
+            'real_name' => 'required|string|max:255',
+            'universe_id' => 'required|exists:universes,id',
+            'picture' => 'nullable|string|max:255'
+        ]);
+    
+        $superhero = SuperHero::findOrFail($id);
+        $superhero->update([
+            'gender_id' => $request->gender_id,
+            'real_name' => $request->real_name,
+            'name' => $request->name,
+            'universe_id' => $request->universe_id,
+            'picture' => $request->picture
+        ]);
+    
+        return to_route('superheroes.index');
     }
 
     /**
@@ -74,6 +85,10 @@ class SuperHeroController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+    
+        $superhero = SuperHero::findOrFail($id);
+        $superhero->delete();
+
+         return to_route('superheroes.index');
     }
 }

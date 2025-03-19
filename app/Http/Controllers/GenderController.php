@@ -37,5 +37,31 @@ class GenderController extends Controller
         return view('genders.show', compact('gender'));
     }
 
-    // Otros métodos (edit, update, destroy) pueden ser implementados según sea necesario
+    public function edit(string $id)
+    {
+        $gender = Gender::findOrFail($id);
+        return view('genders.edit', compact('gender'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:50|unique:genders,name,' . $id
+        ]);
+    
+        $gender = Gender::findOrFail($id);
+        $gender->update([
+            'name' => $request->name
+        ]);
+    
+        return to_route('genders.index');
+    }
+
+    public function destroy(string $id)
+    {
+        $gender = Gender::findOrFail($id);
+        $gender->delete();
+    
+        return to_route('genders.index');
+    }
 }

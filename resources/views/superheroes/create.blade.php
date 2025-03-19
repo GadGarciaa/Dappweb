@@ -6,6 +6,10 @@
 <body>
     <h1>Create SuperHero</h1>
 
+    <hr>
+    <a href="{{ route('superheroes.index') }}">All SuperHeroes</a>
+    <hr>
+
     <form action="{{ route('superheroes.store') }}" method="POST">
         @csrf
         <label for="">Gender:</label>
@@ -36,7 +40,7 @@
 
         <br><br>
 
-        <label for="">Picture URL</label>
+        <label for="">Picture</label>
         <input type="text" name="picture">
 
         <br><br>

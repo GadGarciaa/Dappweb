@@ -34,27 +34,31 @@ class UniverseController extends Controller
         return view('universes.show', compact('universe'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $universe = Universe::findOrFail($id);
+        return view('universes.edit', compact('universe'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:50|unique:universes,name,' . $id
+        ]);
+    
+        $universe = Universe::findOrFail($id);
+        $universe->update([
+            'name' => $request->name
+        ]);
+    
+        return to_route('universes.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $universe = Universe::findOrFail($id);
+        $universe->delete();
+    
+        return to_route('universes.index');
     }
 }
