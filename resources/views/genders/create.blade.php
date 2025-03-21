@@ -6,6 +6,10 @@
 <body>
     <h1>Create Gender</h1>
 
+    <hr>
+    <a href="{{ route('genders.index') }}">All Genders</a>
+    <hr>
+
     <form action="{{ route('genders.store') }}" method="post">
         @csrf
         

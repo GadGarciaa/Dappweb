@@ -6,6 +6,11 @@
 <body>
     <h1>Create Universe</h1>
 
+    <hr>
+    <a href="{{ route('universes.index') }}">All Universe</a>
+    <hr>
+
+
     <form action="{{ route ('universes.store') }}" method="post">
         @csrf
         
