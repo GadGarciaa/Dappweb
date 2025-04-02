@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             GenderSeeder::class,
             UniverseSeeder::class,
+            UserSeeder::class
         ]);
         
         SuperHero::factory(8)->create();
