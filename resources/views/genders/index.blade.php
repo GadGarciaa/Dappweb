@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Gender List</title>
-</head>
-<body>
-    <h1>Genders</h1>
+@extends('layouts.main')
 
-    <hr>
+@section('title', 'Genders')
+
+@section('content')
+    <h1>Genders</h1>
     <a href="{{ route('genders.create') }}">Create Gender</a>
-    <hr>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
         </thead>
-
         <tbody>
             @foreach($genders as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>
-                        <a href="{{ route('genders.show', $item->id) }}">View</a>
+                        <a href="{{ route('genders.show', $item->id) }}">Show</a>
                         <a href="{{ route('genders.edit', $item->id) }}">Edit</a>
                         <form action="{{ route('genders.destroy', $item->id) }}" method="POST" style="display:inline;">
                             @csrf
@@ -37,6 +32,4 @@
             @endforeach
         </tbody>
     </table>
-
-</body>
-</html>
+@endsection

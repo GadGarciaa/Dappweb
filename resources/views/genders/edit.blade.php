@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Edit Gender</title>
-</head>
-<body>
-    <h1>Edit Gender</h1>
+@extends('layouts.main')
 
-    <hr>
-    <a href="{{ route('genders.index') }}">All genders</a>
-    <hr>
+@section('title', 'Edit Gender')
+
+@section('content')
+    <h1>Edit Gender</h1>
 
     <form action="{{ route('genders.update', $gender->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <label for="">Name</label>
-        <input type="text" name="name" value="{{ $gender->name }}">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="{{ $gender->name }}" required>
 
         <br><br>
 
-        <input type="submit" value="Update">
+        <button type="submit">Update</button>
     </form>
-</body>
-</html>
+@endsection

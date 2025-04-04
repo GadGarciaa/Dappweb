@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>SuperHero Test</title>
-</head>
-<body>
-    <h1>SuperHero</h1>
+@extends('layouts.main')
 
-    <hr>
+@section('title', 'SuperHeroes')
+
+@section('content')
+    <h1>SuperHeroes</h1>
     <a href="{{ route('superheroes.create') }}">Create SuperHero</a>
-    <hr>
 
     <table>
         <thead>
@@ -22,23 +18,22 @@
                 <th>Actions</th>
             </tr>
         </thead>
-
         <tbody>
             @foreach($superheroes as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->gender->name ?? 'N/A' }}</td>
                     <td>{{ $item->real_name }}</td>
-                    <td>{{ $item->name }}</td> 
-                    <td>{{ $item->universe->name ?? 'N/A' }}</td> 
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->universe->name ?? 'N/A' }}</td>
                     <td>
                         @if(filter_var($item->picture, FILTER_VALIDATE_URL))
                             <img src="{{ $item->picture }}" alt="{{ $item->name }}" width="100">
                         @else
                             {{ $item->picture }}
                         @endif
-                    </td> 
-                    <td>    
+                    </td>
+                    <td>
                         <a href="{{ route('superheroes.show', $item->id) }}">Show</a>
                         <a href="{{ route('superheroes.edit', $item->id) }}">Edit</a>
                         <form action="{{ route('superheroes.destroy', $item->id) }}" method="POST" style="display:inline;">
@@ -51,6 +46,4 @@
             @endforeach
         </tbody>
     </table>
-
-</body>
-</html>
+@endsection

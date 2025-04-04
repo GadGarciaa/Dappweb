@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Create Gender</title>
-</head>
-<body>
+@extends('layouts.main')
+
+@section('title', 'Create Gender')
+
+@section('content')
     <h1>Create Gender</h1>
 
-    <hr>
-    <a href="{{ route('genders.index') }}">All Genders</a>
-    <hr>
-
-    <form action="{{ route('genders.store') }}" method="post">
+    <form action="{{ route('genders.store') }}" method="POST">
         @csrf
-        
-        <label for="">Name</label>
-        <input type="text" name="name">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
 
-        <input type="submit" value="Create Gender">
+        <br><br>
+
+        <button type="submit">Create</button>
     </form>
-</body>
-</html>
+@endsection

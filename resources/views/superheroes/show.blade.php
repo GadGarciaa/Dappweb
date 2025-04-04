@@ -1,15 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>SuperHero</title>
+@extends('layouts.main')
 
-</head>
-<body>
-    <h1>{{$superhero->name}}</h1>
+@section('title', 'SuperHero Details')
 
-    <hr>
-    <a href="{{ route('superheroes.index') }}">All SuperHeroes</a>
-    <hr>
+@section('content')
+    <h1>SuperHero Details</h1>
 
-</body>
-</html>
+    <p><strong>ID:</strong> {{ $superhero->id }}</p>
+    <p><strong>Name:</strong> {{ $superhero->name }}</p>
+    <p><strong>Real Name:</strong> {{ $superhero->real_name }}</p>
+    <p><strong>Gender:</strong> {{ $superhero->gender->name ?? 'N/A' }}</p>
+    <p><strong>Universe:</strong> {{ $superhero->universe->name ?? 'N/A' }}</p>
+    <p><strong>Picture:</strong></p>
+    @if(filter_var($superhero->picture, FILTER_VALIDATE_URL))
+        <img src="{{ $superhero->picture }}" alt="{{ $superhero->name }}" width="200">
+    @else
+        {{ $superhero->picture }}
+    @endif
+
+    <a href="{{ route('superheroes.index') }}">Back to List</a>
+@endsection

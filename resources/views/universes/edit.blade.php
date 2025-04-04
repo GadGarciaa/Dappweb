@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Edit Universe</title>
-</head>
-<body>
-    <h1>Edit Universe</h1>
+@extends('layouts.main')
 
-    <hr>
-    <a href="{{ route('universes.index') }}">All Universes</a>
-    <hr>
+@section('title', 'Edit Universe')
+
+@section('content')
+    <h1>Edit Universe</h1>
 
     <form action="{{ route('universes.update', $universe->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <label for="">Name</label>
-        <input type="text" name="name" value="{{ $universe->name }}">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="{{ $universe->name }}" required>
 
         <br><br>
 
-        <input type="submit" value="Update">
+        <button type="submit">Update</button>
     </form>
-</body>
-</html>
+@endsection
