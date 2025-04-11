@@ -11,14 +11,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/universe', [UniverseAPIController::class, 'index']);
-Route::get('/universe', [UniverseAPIController::class, 'index']);
-Route::get('/universe/{name}', [UniverseAPIController::class, 'show']);
 Route::get('/universe/id/{id}', [UniverseAPIController::class, 'showById']);
 
 Route::get('/superheroe', [SuperHeroAPIController::class, 'index']);
-Route::get('/superheroe/{name}', [SuperHeroAPIController::class, 'show']);
-Route::get('/superheroe/id/{id}', [SuperHeroAPIController::class, 'showById']); 
+Route::get('/superheroe/id/{id}', [SuperHeroAPIController::class, 'showById']);
 
 Route::get('/gender', [GenderAPIController::class, 'index']);
-Route::get('/gender/{name}', [GenderAPIController::class, 'show']);
 Route::get('/gender/id/{id}', [GenderAPIController::class, 'showById']);

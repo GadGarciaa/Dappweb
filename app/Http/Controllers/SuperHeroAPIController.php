@@ -12,12 +12,6 @@ class SuperHeroAPIController extends Controller
         $superheroes = SuperHero::with(['gender', 'universe'])->get();
         return response()->json($superheroes);
     }
-
-    public function show($name)
-    {
-        $superhero = SuperHero::with(['gender', 'universe'])->findOrFail($name);
-        return response()->json($superhero);
-    }
     public function showById($id)
     {
     $superhero = SuperHero::find($id);

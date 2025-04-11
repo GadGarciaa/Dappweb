@@ -13,12 +13,6 @@ class GenderAPIController extends Controller
         $genders = Gender::all();
         return response()->json($genders);
     }
-
-    public function show($name)
-    {
-        $gender = Gender::with('superheroes')->findOrFail($name);
-        return response()->json($gender);
-    }
     public function showById($id)
     {
     $gender = Gender::find($id);

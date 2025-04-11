@@ -12,11 +12,6 @@ class UniverseAPIController extends Controller
         $universes = Universe::all();
         return response()->json($universes);
     }
-    public function show($name)
-    {
-        $universe = Universe::where('name', $name)->with('superheroes')->get();
-            return response()->json($universe);
-    }
     public function showById($id)
     {
         $universe = Universe::find($id);
